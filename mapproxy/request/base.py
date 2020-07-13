@@ -364,7 +364,7 @@ class RequestParams(object):
         kv_pairs = []
         for key, values in self.params.iteritems():
             value = ','.join(text_type(v) for v in values)
-            kv_pairs.append(key + '=' + quote(value.encode('utf-8'), safe=','))
+            kv_pairs.append(key + '=' + quote(value.encode('utf-8'), safe='%2C'))
         return '&'.join(kv_pairs)
 
     def with_defaults(self, defaults):
